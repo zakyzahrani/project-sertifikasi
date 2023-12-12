@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'age',
+        'call_num',
+        'gender',
+        'is_admin',
     ];
 
     /**
@@ -42,4 +46,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
