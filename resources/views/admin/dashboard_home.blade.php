@@ -97,46 +97,39 @@
         </div>
 
         <div class="table-data">
-            <div class="order">
-                <div class="head">
-                    <h3>Laporan Keuangan AutoRent</h3>
-                    <button onclick="openModal()" class="btn-pdf">Donwload
-                        PDF</button>
-                    <a href="{{ route('dashboard_home_', ['range' => 'week']) }}" class="btn btn-primary">Per Minggu</a>
-                    <a href="{{ route('dashboard_home_', ['range' => 'month']) }}" class="btn btn-primary">Per Bulan</a>
-                    <a href="{{ route('dashboard_home_', ['range' => 'year']) }}" class="btn btn-primary">Per Tahun</a>
-                </div>
-                <table>
-                    <thead>
-                        @php
-                            $no = 1;
-                            $totalCost = 0;
-                        @endphp
-                        <tr>
-                            <th>No</th>
-                            <th>Order ID</th>
-                            <th>Tanggal Pemasukan</th>
-                            <th>Pemasukan</th>
+            <div class="order">                                  
+                @php
+                    $no = 1;
+                    $totalCost = 0;
+                @endphp
+                
+            
+                @foreach ($orders as $order)                           
+                    @php
+                        $no++;
+                        $totalCost += $order->payment->cost;
+                    @endphp
+                @endforeach
+                    
+                <div class="row1-container">
+                    <div class="box cyan">
+                        <h2>Pemasukan</h2>
+                        <p>Rp. {{ $totalCost }}</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/925/925065.png" alt="">
+                    </div>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($orders as $order)
-                            <tr>
-                                <td>{{ $no }}</td>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->return_date }}</td>
-                                <td>{{ $order->payment->cost }}</td>
+                    <div class="box red">
+                        <h2>Total User</h2>
+                        <p>52</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3659/3659810.png" alt="">
+                    </div>
 
-                                @php
-                                    $no++;
-                                    $totalCost += $order->payment->cost;
-                                @endphp
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <p>Total Cost: {{ $totalCost }}</p>
+                    <div class="box blue">
+                        <h2>Total Unit Kapal</h2>
+                        <p>10</p>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5232/5232943.png" alt="">
+                    </div>
+                    </div>
 
             </div>
 

@@ -2,7 +2,7 @@
     <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="#" class="brand" >            
+        <a href="{{ route('home') }}" class="brand" >            
             <img width="250" class="bx"  src="../admin/assets/img/boatbooker.png">
         </a>
         <ul class="side-menu top">
@@ -41,7 +41,12 @@
         <ul class="side-menu">
 
             <li>
-                <a href="#" class="logout">
+                <a class="logout" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                     <i class='bx bxs-log-out-circle'></i>
                     <span class="text">Logout</span>
                 </a>
