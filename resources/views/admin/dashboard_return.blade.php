@@ -10,6 +10,10 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/style.css') }}">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
     <title>Validasi</title>
 </head>
 
@@ -37,10 +41,9 @@
             <div class="order">
                 <div class="head">
                     <h3>Table Car</h3>
-                    <i class='bx bx-search'></i>
-                    <i class='bx bx-filter'></i>
                 </div>
-                <table>
+
+                <table id="myTable" class="">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -52,12 +55,9 @@
                             <th>Denda</th>
                             <th>Validasi Admin</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
                     <tbody>
-
-
                         <?php
                         $no = 1;
                         ?>
@@ -108,6 +108,11 @@
 
 
     <script src="{{ asset('admin/assets/script.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+    </script>
 </body>
 
 </html>
