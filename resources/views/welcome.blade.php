@@ -50,7 +50,7 @@
                 <img src="{{ asset('user/img/slider2_new.png') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('user/img/slider1_new.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('user/img/banner1.png') }}" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
