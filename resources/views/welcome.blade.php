@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AutoRent</title>
+    <title>BoatBooker</title>
     <link rel="icon" href="{{ asset('user/img/logo.png') }}" sizes="50">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -18,12 +18,12 @@
     {{-- <div class="rent-carousel">
         <a href="{{ route('about') }}">
             <div class="slider">
-                <img src="{{ asset('user/img/slider2_new.png') }}" alt="banner">
+                <img src="{{ asset('user/img/Slider_1.png') }}" alt="banner">
             </div>
         </a>
-        <a href="{{ route('index_car') }}">
+        <a href="{{ route('index_boat') }}">
             <div class="slider">
-                <img src="{{ asset('user/img/slider1_new.png') }}" alt="banner">
+                <img src="{{ asset('user/img/Slider_2.png') }}" alt="banner">
             </div>
         </a>
         <div class="btn-prev">
@@ -47,10 +47,10 @@
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('user/img/slider2_new.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('user/img/Slider_1.png') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('user/img/slider1_new.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('user/img/Slider_2.png') }}" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -65,11 +65,12 @@
     <!-- CAROUSEL END -->
 
     <!-- RENT -->
-    <div class="rent container-lg mt-5">
-        <h5>Recommendation</h1>
+    @if(!auth()->user() || (auth()->user() && auth()->user()->is_admin !== 1))
+        <div class="rent container-lg mt-5">
+            <h5>Recommendation</h1>
 
             <div class="row mt-4">
-                @foreach ($cars as $car)
+                @forelse ($cars as $car)
                     <div class="col-lg-4 col-sm-6 mt-4">
                         <div class="card border-0 shadow-lg">
                             <img src="{{ url('storage/' . $car->car_img) }}" class="card-img-top" alt="...">
@@ -77,21 +78,27 @@
                                 <h5 class="card-title">{{ $car->name }}</h5>
                                 <p class="rent-merk">{{ $car->brand }}</p>
                             </div>
-                            <p class="rent-price fw-semibold d-flex justify-content-center">{{ $car->price }}/day</p>
-                            <form action="{{ route('show_car', $car) }}" method="get">
+                            <p class="rent-price fw-semibold d-flex justify-content-center">Rp {{ $car->price }} /day</p>
+                            <form action="{{ route('show_boat', $car) }}" method="get">
                                 <button type="submit"
                                     class="btn btn-rent border-0 rounded-0 rounded-bottom p-2 fw-semibold w-100">
-                                    Rent
-                                    Now</button>
+                                    Details</button>
                             </form>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12 text-center">
+                        <p>No Data Available</p>
+                    </div>
+                @endforelse
             </div>
+        </div>
+    @endif
 
-    </div>
     <!-- RENT END -->
+
     <x-footer_user />
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var carouselExample = document.getElementById('carouselExample');
@@ -105,9 +112,8 @@
         });
     </script>
 
-
-
     <script src="{{ asset('user/js/script.js') }} }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoRent</title>
+    <title>BoatBooker</title>
     <link rel="icon" href="{{ asset('user/img/logo.png') }}" sizes="50" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
@@ -30,29 +30,32 @@
     <!-- START ORDER HISTORY -->
     <div class="container order-container riwayat-body">
         <div class="mt-5 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="display-5 text-uppercase text-center">RIWAYAT <span class="text-success">PEMESANAN</span></h1>
+            <h1 class="display-5 text-center">Riwayat Penyewaan</h1>
 
             <!-- Card -->
-            @foreach ($orders as $order)
+            @forelse ($orders as $order)
                 <div class="card p-3 mb-3 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded"
                     style="max-width: 1000px; background-color: 0d7c5d;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <h4>CAR00{{ $order->car_id }}</h4>
+                            <h5>ID Penyewaan</h5>
+                            <h4>BB00{{ $order->car_id }}</h4>
                             <img src="{{ url('Storage/' . $order->car->car_img) }}" class="img-fluid rounded-start"
                                 alt="...">
                         </div>
+
                         <div class="col-md-3">
                             <div class="card-body">
 
-                                <h5 class="card-title">Mobil</h5>
-                                <p class="card-text">{{ $order->car->brand }}{{ $order->car->name }}</p>
+                                <h5 class="card-title">Nama Kapal</h5>
+                                <p class="card-text">{{ $order->car->brand }}<br>{{ $order->car->name }}</p>
                                 <h5 class="card-title">Tanggal Rental</h5>
                                 <p class="card-text">{{ $order->rent_date }}</p>
                                 <h5 class="card-title">Tanggal Kembali</h5>
                                 <p class="card-text"> {{ $order->return_date }}</p>
                             </div>
                         </div>
+
                         <div class="col-md-5 me-">
                             <div class="card-body text-end">
                                 <div class="card-content mb-3">
@@ -100,7 +103,7 @@
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal"
                                         data-bs-target="#invoice">
-                                        Lanjut Pembayran
+                                        Lanjut Pembayaran
                                     </button>
 
                                     <!-- Modal -->
@@ -123,25 +126,23 @@
                                                                     aria-hidden="true"></i></label>
                                                             <select class="form-select" id="inputGroupSelect01">
                                                                 <option selected>Metode Pembayaran...</option>
-                                                                <option value="1">BCA - 123456789000</option>
-                                                                <option value="2">Mandiri - 000987654321</option>
-                                                                <option value="3">Bank Jateng - 5678900001234
+                                                                <option value="1">OVO - 0881 1234 4321</option>
+                                                                <option value="2">GoPay - 0881 1234 4321</option>
+                                                                <option value="3">Blu by BCA - 1123441231
                                                                 </option>
-                                                                <option value="4">BRI - 43218765000</option>
+                                                                <option value="4">Bank Jago - 2321212332</option>
                                                             </select>
                                                         </div>
 
                                                         <label for="formFileMultiple" class="form-label">Silahkan
-                                                            input
-                                                            bukti
-                                                            pembayaran</label>
+                                                            input bukti pembayaran</label>
                                                         <form
                                                             action="{{ route('submit_payment_receipt', $order->payment) }}"
                                                             method="post" enctype="multipart/form-data">
                                                             @csrf
                                                             <input class="form-control" placeholder="Input bukti"
                                                                 type="file" id="formFileMultiple" multiple
-                                                                name="payment_receipt" ">
+                                                                name="payment_receipt">
 
 
 
@@ -172,7 +173,12 @@
                                             <p class="card-text"><small class="text-body-secondary">Last updated 3
                                                     mins ago</small></p>
                                         </div>
-                                @endforeach
+
+                                        @empty
+                                            <div class="col-12 mt-5 text-center">
+                                                <p>No Data Available</p>
+                                            </div>
+                                @endforelse
                             </div>
                         </div>
                         <!-- END ORDER HISTORY -->

@@ -76,11 +76,10 @@
             </svg>
         </a>
         <p class="text-center mt-3 w-5">
-            Sewa mobil dengan mudah dan cepat. Temukan armada mobil berkualitas tinggi dengan harga terjangkau di
-            AutoRent.
+            Sewa kapal dengan mudah dan cepat. Temukan kapal berkualitas tinggi dengan harga terjangkau di BoatBooker.
         </p>
         <div class="copyright">
-            <p>&#169; 2023 AutoRent</p>
+            <p>&#169; 2023 BoatBooker</p>
         </div>
     </div>
     <!-- FOOTER END -->

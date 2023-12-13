@@ -25,7 +25,7 @@ class PdfController extends Controller
         })->get();
 
 
-        $imagePath = public_path('user/img/logo1_green.png');
+        $imagePath = public_path('user/img/boatbooker.png');
 
         $pdf = PDF::loadView('pdf.bukti_pembayaran', compact('orders', 'imagePath'));
 
