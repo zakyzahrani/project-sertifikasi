@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Example 2</title>
+    <title>Bukti Pembayaran</title>
     <link rel="stylesheet" href="style.css" media="all" />
     <style>
         @font-face {
@@ -66,7 +66,7 @@
 
         #client {
             padding-left: 6px;
-            border-left: 6px solid #0087C3;
+            border-left: 6px solid #0088C7;
             float: left;
         }
 
@@ -86,7 +86,7 @@
         }
 
         #invoice h1 {
-            color: #0087C3;
+            color: #0088C7;
             font-size: 2.4em;
             line-height: 1em;
             font-weight: normal;
@@ -123,7 +123,7 @@
         }
 
         table td h3 {
-            color: #57B223;
+            color: #0088C7;
             font-size: 1.2em;
             font-weight: normal;
             margin: 0 0 0.2em 0;
@@ -146,7 +146,7 @@
         table .qty {}
 
         table .total {
-            background: #57B223;
+            background: #0088C7;
             color: #FFFFFF;
         }
 
@@ -174,9 +174,9 @@
         }
 
         table tfoot tr:last-child td {
-            color: #57B223;
+            color: #0088C7;
             font-size: 1.4em;
-            border-top: 1px solid #57B223;
+            border-top: 1px solid #0088C7;
         }
 
         table tfoot tr td:first-child {
@@ -231,10 +231,10 @@
             <img src="{{ $imagePath }}" alt="" style="width: 100px; height: auto">
         </div>
         <div id="company">
-            <h2 class="name">AutoRent Semarang</h2>
+            <h2 class="name">BoatBooker</h2>
             <div></div>
-            <div>+62 896-4908-16210</div>
-            <div><a href="mailto:company@example.com">cs.autorent@gmail.com</a></div>
+            <div>+62 881-1234-4321</div>
+            <div><a href="mailto:company@example.com">customerservice@boatbooker.com</a></div>
         </div>
     </header>
     <br>
@@ -266,7 +266,7 @@
                 <tbody>
                     <tr>
                         <td class="desc">
-                            {{ $order->car->brand }}{{ $order->car->name }}
+                            {{ $order->car->brand }}<br>{{ $order->car->name }}
                         </td>
                         <td class="unit">Rp{{ $order->car->price }}/hari</td>
                         <td class="qty">{{ $order->rent_date }}</td>
@@ -283,19 +283,19 @@
                 </tfoot>
             </table>
             <div id="thanks">Kami ingin mengucapkan terima kasih atas kepercayaan Anda dalam menggunakan layanan
-                rental kami. Ini adalah suatu kehormatan bagi kami dapat menjadi bagian dari perjalanan Anda dan
+                penyewaan kapal kami. Ini adalah suatu kehormatan bagi kami dapat menjadi bagian dari perjalanan Anda dan
                 memberikan pengalaman yang menyenangkan.</div>
             <div id="notices">
                 <div>NOTICE:</div>
-                <div class="notice">Bukti Pembayaran ini wajib dibawa pada saat pengambilan mobil rental.</div>
+                <div class="notice">Bukti Pembayaran ini wajib dibawa pada saat pengambilan kapal.</div>
             </div>
         @endforeach
     </main>
     <footer>
         <div class="footer-content">
-            AutoRent Semarang
+            BoatBooker
             <br>
-            Drive Ur Dream , Rent With Us!
+            Sail Your Dream!
         </div>
     </footer>
 </body>

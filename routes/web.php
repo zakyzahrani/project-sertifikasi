@@ -34,11 +34,10 @@ Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])-
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
 
-Route::get('/car', [CarController::class, 'index_car'])->name('index_car');
+Route::get('/boat', [CarController::class, 'index_boat'])->name('index_boat');
 
-
-
-
+//Route Search
+Route::get('/search', [CarController::class, 'search'])->name('search');
 
 Route::middleware(['admin'])->group(function () {
 
@@ -67,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'index_user'])->name('index_user');
     Route::patch('/profile', [UserController::class, 'edit_user'])->name('edit_user');
     //Car Route
-    Route::get('/car/{car}', [CarController::class, 'show_car'])->name('show_car');
+    Route::get('/car/{car}', [CarController::class, 'show_boat'])->name('show_boat');
     Route::get('/order', [OrderController::class, 'show_order'])->name('show_order');
     Route::post('/order/{car}', [OrderController::class, 'add_order'])->name('add_order');
     Route::post('/order/{payment}/pay', [PaymentController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');

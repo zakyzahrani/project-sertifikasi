@@ -9,7 +9,7 @@
 }
 
 .navbar-brand svg path{
-    fill: #0d7c5d;
+    fill: #0088C7;
 }
 
 .nav-item{
@@ -20,7 +20,7 @@
 }
 
 .nav-item:hover {
-    background-color: rgba(22, 152, 115, 1);
+    background-color: rgba(0, 136, 199, 1);
     border-radius: 30px;
     padding: 0% 10%;
 }
@@ -42,7 +42,7 @@
 }
 
 .nav-acc {
-    color: #0d7c5d;
+    color: #0088C7;
 }
 
 .dropdown-link {
@@ -54,7 +54,7 @@
 }
 
 .dropdown-link:hover {
-    background-color: #0d7c5d;
+    background-color: #0088C7;
 }
 
 .dropdown-link:hover a {
@@ -171,12 +171,12 @@
 }
 
 .btn-rent {
-    background-color: #0d7c5d;
+    background-color: #0088C7;
     color: #F7FFF7;
 }
 
 .btn-rent:hover {
-    background-color: #0b694f;
+    background-color: #0088C7;
     color: #F7FFF7;
 }
 /* Rent End */
@@ -238,12 +238,26 @@ input {
 }
 
 .btn-login {
-    background-color: #0d7c5d;
+    background-color: #0088C7;
     color: #F7FFF7;
 }
 
 .btn-login:hover{
-    background-color: #0b694f;
+    background-color: #005c84;
+    color: #F7FFF7;
+}
+
+.register-text {
+    color: #0d7c5d;
+}
+
+.btn-register {
+    background-color: #0088C7;
+    color: #F7FFF7;
+}
+
+.btn-register:hover{
+    background-color: #005c84;
     color: #F7FFF7;
 }
 

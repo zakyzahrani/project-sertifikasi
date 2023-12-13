@@ -32,17 +32,26 @@ class UserController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'name' => 'required',
-            'call_num' => 'required',
-            'password' => 'required|min:8',
-
-        ]);
-        $user->update([
-            'name' => $request->name,
-            'call_num' => $request->call_num,
-            'password' => Hash::make($request->password)
+            'name' => 'nullable|string',
+            'call_num' => 'nullable|string',
+            'password' => 'nullable|string|min:8',
         ]);
 
-        return Redirect::back();
+        // Menggunakan logika kondisional untuk mengubah hanya data yang diisi dalam formulir
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+
+        if ($request->filled('call_num')) {
+            $user->call_num = $request->call_num;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return Redirect::back()->with('success', 'Profile updated successfully');
     }
 }

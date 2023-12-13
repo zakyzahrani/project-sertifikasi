@@ -52,17 +52,9 @@ class RegisterController extends Controller
         $validator = Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'age' => ['required', 'integer', 'min:18', 'max:255'],
-            'gender' => ['required'],
             'call_num' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-
-        $validator->after(function ($validator) use ($data) {
-            if ($data['age'] < 17) {
-                $validator->errors()->add('age', 'Anda harus berusia di atas 18 tahun.');
-            }
-        });
 
         return $validator;
     }
@@ -79,8 +71,6 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'age' => $data['age'],
-            'gender' => $data['gender'],
             'call_num' => $data['call_num'],
             'password' => Hash::make($data['password']),
         ]);
