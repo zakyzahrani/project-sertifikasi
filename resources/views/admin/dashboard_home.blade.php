@@ -89,18 +89,23 @@
 
         <div class="table-data">
             <div class="order">
-                @php
+            @php
                 $no = 1;
                 $totalCost = 0;
-                @endphp
+            @endphp
 
-
-                @foreach ($orders as $order)
+            @foreach ($orders as $order)
                 @php
-                $no++;
-                $totalCost += $order->payment->cost;
+                    $no++;
+                    $totalCost += $order->payment->cost;
+
+                    // Check if the order has an associated car_return
+                    if ($order->carReturn) {
+                        $totalCost += $order->carReturn->fines;
+                    }
                 @endphp
-                @endforeach
+            @endforeach
+
 
                 <div class="row1-container">
                     <div class="box cyan">
@@ -128,49 +133,10 @@
 
 
     </main>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3 style="margin-bottom:20px">Download Laporan Keuangan PDF</h3>
-            <div class="laporan_form">
-                <div class="">
-                    <form action="{{ route('pdf_keuangan', ['range' => 'week']) }}" method="post">
-                        @csrf
-                        <button class="btn-pdf" type="submit">Laporan Mingguan</button>
-                    </form>
-                </div>
-                <div>
-                    <form action="{{ route('pdf_keuangan', ['range' => 'month']) }}" method="post">
-                        @csrf
-                        <button class="btn-pdf" type="submit">Laporan Bulanan</button>
-                    </form>
-                </div>
-                <div>
-                    <form action="{{ route('pdf_keuangan', ['range' => 'year']) }}" method="post">
-                        @csrf
-                        <button class="btn-pdf" type="submit">Laporan Tahunan</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
     <!-- MAIN -->
     </section>
-    <!-- CONTENT -->
-    <script>
-        function openModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "block";
-        }
-
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-    </script>
-
+    <!-- CONTENT -->    
     <script src="{{ asset('admin/assets/script.js') }}"></script>
 </body>
 

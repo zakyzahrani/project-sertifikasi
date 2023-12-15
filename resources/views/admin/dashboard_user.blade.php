@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($users->reverse() as $user)
                             <tr>
 
                                 <td>{{ $user->name }}</td>

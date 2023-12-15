@@ -28,9 +28,11 @@ class CarReturnController extends Controller
             'fines' => 'required|min:0',
         ]);
 
+        $totalFines = $request->date_of_return > $CarReturn->order->return_date ? 100000 : $request->fines;
+
         $CarReturn->update([
             'date_of_return' => $request->date_of_return,
-            'fines' => $request->fines,
+            'fines' => $totalFines,
             'validate_admin' => true,
         ]);
 

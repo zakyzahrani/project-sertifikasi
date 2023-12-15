@@ -13,7 +13,8 @@ class Order extends Model
         'payment_id',
         'car_id',
         'rent_date',
-        'return_date'
+        'return_date',
+        'created_at',
     ];
 
     public function return_car()
@@ -32,7 +33,7 @@ class Order extends Model
 
     public function carReturn()
     {
-        return $this->hasOne(CarReturn::class);
+        return $this->hasOne(CarReturn::class, 'order_id', 'id');
     }
 
 }

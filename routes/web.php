@@ -26,7 +26,6 @@ Route::middleware(['admin'])->group(function () {
     Route::patch('/admin/dashboardcar/{CarReturn}', [CarReturnController::class, 'update_return'])->name('update_return');
     Route::get('/admin/dashboardhome', [OrderController::class, 'dashboard_home'])->name('dashboard_home');
     Route::get('/admin/dashboardhome/{range}', [OrderController::class, 'dashboard_home_'])->name('dashboard_home_');
-    Route::post('/admin/laporankeuangan/{range}', [PdfController::class, 'laporan_keuangan'])->name('pdf_keuangan');
     Route::post('/admin/dashboardorder/confirm/{payment}', [PaymentController::class, 'confirmPayment'])->name('confirmPayment');
 
     Route::get('/admin/dashboardcategory', [AdminController::class, 'dashboard_category'])->name('dashboard_category');

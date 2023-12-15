@@ -49,7 +49,7 @@
                         <?php
                         $no = 1;
                         ?>
-                        @foreach ($CarReturns as $CarReturn)
+                        @foreach ($CarReturns->reverse() as $CarReturn)
                             <tr>
                                 <td>{{ $no }}</td>
                                 <td>{{ $CarReturn->id }}</td>
@@ -63,13 +63,7 @@
                                         {{ $CarReturn->date_of_return }}
                                     @endif
                                 </td>
-                                <td>
-                                    @if ($CarReturn->date_of_return > $CarReturn->order->return_date)
-                                        {{ $CarReturn->fines + 100000 }}
-                                    @else
-                                        {{ $CarReturn->fines }}
-                                    @endif
-                                </td>
+                                <td>{{ $CarReturn->fines }}</td>
                                 <td>
                                     @if ($CarReturn->validate_admin)
                                         Sudah Valid

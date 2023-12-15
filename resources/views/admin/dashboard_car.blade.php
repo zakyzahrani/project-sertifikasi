@@ -41,7 +41,7 @@
                 <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>Id_Mobil</th>
+                            <th>Id Kapal</th>
                             <th>Nama</th>
                             <th>Kategori</th>
                             <th>Harga/Hari</th>
