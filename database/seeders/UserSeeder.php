@@ -21,5 +21,12 @@ class UserSeeder extends Seeder
             'is_admin'  =>  1,
             'call_num'  => 12321313,
         ]);
+        User::create([
+            'name'  =>  'User',
+            'email' =>  'user@gmail.com',
+            'password'  =>  Hash::make('11111111'),
+            'is_admin'  =>  0,
+            'call_num'  => 12321313,
+        ]);
     }
 }

@@ -34,6 +34,14 @@ class CarReturnController extends Controller
             'validate_admin' => true,
         ]);
 
+        // Check if date_of_return is not null
+        if ($request->date_of_return) {
+            // Update the status of the associated car to 'Tersedia'
+            $CarReturn->order->car->update([
+                'status' => 'Tersedia',
+            ]);
+        }
+
         return Redirect::route('dashboard_return');
     }
 }
