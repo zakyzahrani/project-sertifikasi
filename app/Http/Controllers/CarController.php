@@ -26,13 +26,17 @@ class CarController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('q');
+        $carsQuery = Car::query();
 
         if ($query) {
-            $cars = Car::where('name', 'like', '%' . $query . '%')->get();
-        } else {
-            $cars = Car::all();
+            $carsQuery->where(function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('category', 'like', '%' . $query . '%');
+            });
         }
-
+    
+        $cars = $carsQuery->get();
+    
         return view('index_boat', ['cars' => $cars]);
     }
 

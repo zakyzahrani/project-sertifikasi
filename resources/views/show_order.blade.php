@@ -123,8 +123,7 @@
                                                         <option selected>Metode Pembayaran...</option>
                                                         <option value="1">OVO - 0881 1234 4321</option>
                                                         <option value="2">GoPay - 0881 1234 4321</option>
-                                                        <option value="3">Blu by BCA - 1123441231
-                                                        </option>
+                                                        <option value="3">Blu by BCA - 1123441231</option>
                                                         <option value="4">Bank Jago - 2321212332</option>
                                                     </select>
                                                 </div>
