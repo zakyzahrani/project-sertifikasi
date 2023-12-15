@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use App\Models\CarReturn;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,8 @@ class CarController extends Controller
 
     public function show_boat(Car $car)
     {
-        return view('show_boat', compact('car'));
+        $CarReturns = CarReturn::all();
+        return view('show_boat', compact('car','CarReturns'));
     }
 
     public function search(Request $request)

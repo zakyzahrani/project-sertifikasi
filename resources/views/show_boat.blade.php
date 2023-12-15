@@ -41,7 +41,16 @@
                             </div>
                         </div>
                         <div class="detail-btn ms-3 pt-3">
-                            <button class="btn btn-rent" type="submit">Sewa Sekarang</button>
+                            @php
+                                $disableButton = $CarReturns->where('date_of_return', null)->count() >= 2;
+                            @endphp
+
+                            @if (!$disableButton)
+                                <button class="btn btn-rent" type="submit">Sewa Sekarang</button>                                
+                            @else
+                                <button class="btn btn-rent" type="submit" disabled>Sewa Sekarang</button>
+                                <p style="color: red;">Maximum 2 ongoing orders!</p>
+                            @endif
                         </div>
                     </form>
 
@@ -60,18 +69,22 @@
         <div class="card border-0 shadow-lg rounded mt-5">
             <h5 class="ms-3 mt-4 text-center">Detail Produk</h5>
             <hr>
-            <div class="detail-product row text-center">
-                <div class="col-lg-3 col-6">
+            <div class="detail-product row text-center" style="justify-content: center;">
+                <div class="col-lg-3 col-4">
                     <p class="mb-1">Kategori</p>
                     <p>{{ $car->category }}</p>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-4">
                     <p class="mb-1">Nama</p>
                     <p> {{ $car->name }}</p>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-4">
                     <p class="mb-1">Kapasitas</p>
                     <p>{{ $car->capacity }} orang</p>
+                </div>
+                <div class="col-lg-3 col-4">
+                    <p class="mb-1">Bahan Bakar</p>
+                    <p>{{ $car->fuel }}</p>
                 </div>
             </div>
             <hr>
