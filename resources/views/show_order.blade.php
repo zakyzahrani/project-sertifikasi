@@ -89,7 +89,7 @@
                                             </h4>
                                             <form action="{{ route('pdf_user') }}" method="post">
                                                 @csrf
-                                                <button class="btn btn-success" type="submit" style="">Download
+                                                <button class="btn btn-success" type="submit" >Download
                                                     PDF</button>
                                             </form>
                                         @endif

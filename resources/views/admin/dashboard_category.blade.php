@@ -25,21 +25,12 @@
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>User</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_user') }}">User</a>
-                    </li>
-                </ul>
+                <h1>Category</h1>                
             </div>
 
-            <a href="{{ route('create_user') }}" class="btn-download">
+            <a href="{{ route('create_category') }}" class="btn-download">
                 <i class='bx bxs-bus'></i>
-                <span class="text">Add User</span>
+                <span class="text">Add Category</span>
             </a>
 
         </div>
@@ -53,36 +44,25 @@
                 <table id="myTable" class="">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <th>Kategori</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($categories as $category)
                             <tr>
 
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    @if ($user->is_admin == true)
-                                        Admin
-                                    @else
-                                        User
-                                    @endif
-                                </td>
+                                <td>{{ $category->category }}</td>
                                 <td>
                                     <span style="display: flex;">
-                                        <form action="{{ route('edit_user', $user) }}" method="get">
+                                        <form action="{{ route('edit_category', $category) }}" method="get">
                                             @csrf
-
                                             <button type="submit" class="btn btn-primary">
                                                 <i class="bx bx-edit" style="color:green; font-size: 20px;"></i>
                                             </button>
                                         </form>
 
-                                        <form action="{{ route('delete_user', $user) }}" method="post">
+                                        <form action="{{ route('delete_category', $category) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger">
@@ -91,7 +71,6 @@
                                         </form>
                                     </span>
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>

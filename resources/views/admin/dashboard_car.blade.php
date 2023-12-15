@@ -73,7 +73,7 @@
                                 <td>{{ $car->capacity }}</td>
                                 <td>{{ $car->colour }}</td>
                                 <td>{{ $car->fuel }}</td>
-                                <td><img src="{{ url('storage/' . $car->car_img) }}" alt=""
+                                <td><img src="{{ url('storage/'.$car->car_img) }}" alt=""
                                         style="border-radius:0; width:100px; height:100px;">
                                 </td>
                                 <td class="d-flex align-items-center justify-content-center">

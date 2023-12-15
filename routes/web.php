@@ -47,16 +47,29 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboardhome/{range}', [OrderController::class, 'dashboard_home_'])->name('dashboard_home_');
     Route::post('/admin/laporankeuangan/{range}', [PdfController::class, 'laporan_keuangan'])->name('pdf_keuangan');
     Route::post('/admin/dashboardorder/confirm/{payment}', [PaymentController::class, 'confirmPayment'])->name('confirmPayment');
-    Route::get('/admin/dashboardcar', [AdminController::class, 'dashboard_car'])->name('dashboard_car');
 
-    Route::get('admin/dashboardcar/create', [AdminController::class, 'create_car'])->name('create_car');
-    Route::post('admin/dashboardcar/create', [AdminController::class, 'store_car'])->name('store_car');
+    Route::get('/admin/dashboardcategory', [AdminController::class, 'dashboard_category'])->name('dashboard_category');
+    Route::delete('/admin/dashboardcategory/{category}/delete', [AdminController::class, 'delete_category'])->name('delete_category');
+    Route::get('/admin/dashboardcategory/create', [AdminController::class, 'create_category'])->name('create_category');
+    Route::post('/admin/dashboardcategory/create', [AdminController::class, 'add_category'])->name('add_category');
+    Route::get('/admin/dashboardcategory/{category}/edit', [AdminController::class, 'edit_category'])->name('edit_category');
+    Route::patch('/admin/dashboardcategory/{category}/update', [AdminController::class, 'update_category'])->name('update_category');
+
+    Route::get('/admin/dashboardcar', [AdminController::class, 'dashboard_car'])->name('dashboard_car');
+    Route::get('/admin/dashboardcar/create', [AdminController::class, 'create_car'])->name('create_car');
+    Route::post('/admin/dashboardcar/create', [AdminController::class, 'store_car'])->name('store_car');
     Route::delete('/admin/dashboardcar/{car}', [AdminController::class, 'delete_car'])->name('delete_car');
 
     Route::get('/admin/dashboardcar/{car}/edit', [AdminController::class, 'edit_car'])->name('edit_car');
     Route::patch('/admin/dashboardcar/{car}/update', [AdminController::class, 'update_car'])->name('update_car');
+
     Route::get('/admin/dashboarduser', [AdminController::class, 'dashboard_user'])->name('dashboard_user');
     Route::delete('/admin/dashboarduser/{user}/delete', [AdminController::class, 'delete_user'])->name('delete_user');
+    Route::get('/admin/dashboarduser/create', [AdminController::class, 'create_user'])->name('create_user');
+    Route::post('/admin/dashboarduser/create', [AdminController::class, 'add_user'])->name('add_user');
+    Route::get('/admin/dashboarduser/{user}/edit', [AdminController::class, 'edit_user'])->name('edit_user');
+    Route::patch('/admin/dashboarduser/{user}/update', [AdminController::class, 'update_user'])->name('update_user');
+
     Route::get('/admin/dashboardorder', [OrderController::class, 'dashboard_order'])->name('dashboard_order');
     Route::get('/admin/dashboardreturn', [CarReturnController::class, 'dashboard_return'])->name('dashboard_return');
 });
@@ -64,7 +77,7 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::post('/pdf_user', [PdfController::class, 'bukti_pembayaran_pdf'])->name('pdf_user');
     Route::get('/profile', [UserController::class, 'index_user'])->name('index_user');
-    Route::patch('/profile', [UserController::class, 'edit_user'])->name('edit_user');
+    Route::patch('/profile', [UserController::class, 'edit_user_profile'])->name('edit_user_profile');
     //Car Route
     Route::get('/car/{car}', [CarController::class, 'show_boat'])->name('show_boat');
     Route::get('/order', [OrderController::class, 'show_order'])->name('show_order');
