@@ -87,10 +87,9 @@
                         <div class="custom-select" style="width:200px;">
                             <select style="font-size: 18px ; padding: 6px 5px; margin: 5px 0px" name="brand"
                                 id="" class="form-control">
-                                <option value="Kapal Kecil">Kapal Kecil</option>
-                                <option value="Kapal Besar">Kapal Besar</option>
-                                <option value="Kapal Nelayan">Kapal Nelayan</option>
-                                <option value="Jetski">Jetski</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                @endforeach
                             </select><br>
                         </div>
                         {{-- <input class="form-control" type="text"name="brand" /><br> --}}

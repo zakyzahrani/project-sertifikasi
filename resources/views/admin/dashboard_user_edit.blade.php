@@ -10,7 +10,7 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/style.css') }}">
 
-    <title>Edit Kapal</title>
+    <title>Tambah User</title>
     <style>
         .form-group {
             margin-bottom: 1rem;
@@ -58,7 +58,7 @@
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Boat</h1>
+                <h1>User</h1>
             </div>
 
         </div>
@@ -66,29 +66,38 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Edit Kapal</h3>
+                    <h3>Edit User</h3>
 
                 </div>
-                <form method="post" action="{{ route('update_car', $car) }}" enctype="multipart/form-data">
+                <form role="form" method="post" action="{{ route('update_user', $user) }}" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="form-group">
-                        <label>Nama : </label>
-                        <input class="form-control" type="text"name="name"value="{{ $car->name }}" />
-                        <label>Brand : </label>
-                        <input class="form-control" type="text"name="brand"value="{{ $car->brand }}" />
-                        <label>Warna : </label>
-                        <input class="form-control" type="text"name="colour" value="{{ $car->colour }}" />
-                        <label>Plat Nomor : </label>
-                        <input class="form-control" type="text"name="plat_num"value="{{ $car->plat_num }}" />
-                        <label>Kapasitas : </label>
-                        <input class="form-control"type="number" name="capacity" value="{{ $car->capacity }}" />
-                        <label>Fuel : </label>
-                        <input class="form-control" type="text"name="fuel"value="{{ $car->fuel }}" />
-                        <label>Harga/Hari : </label>
-                        <input class="form-control"type="number" name="price" value="{{ $car->price }}" />
-                        <input type="file" name="car_img">
-                        <br>
+                        <label>Name : </label>
+                        <input class="form-control" type="text"name="name"value="{{ $user->name }}" />
+                        <label>Email : </label>
+                        <input class="form-control" type="text"name="email"value="{{ $user->email }}" />
+                        <label>Password : </label>
+                        <input class="form-control"type="password" name="password" />
+                        <label>Role : </label>
+                        <div class="custom-select" style="width:200px;">
+                            <select style="font-size: 18px ; padding: 6px 5px; margin: 5px 0px" name="is_admin"
+                                id="" class="form-control" >
+                                
+                                    @if ($user->is_admin == '1')
+                                        <option value="1" selected>Admin</option>
+                                        <option value="0" >User</option>
+                                    @else
+                                        <option value="1" >Admin</option>
+                                        <option value="0" selected>User</option>
+                                    @endif</option>
+                                
+                                
+                            </select><br>
+                        <label>Phone Number: </label>
+                        <input class="form-control" type="text"name="call_num"value="{{ $user->call_num }}" />
+                        </div>
+
                         <button class="btn btn-success" type="submit">Submit</button>
                     </div>
                 </form>

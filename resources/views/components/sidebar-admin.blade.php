@@ -18,6 +18,12 @@
                     <span class="text">Boat</span>
                 </a>
             </li>
+            <li class="{{ request()->routeIs('dashboard_category') ? 'active' : '' }}">
+                <a href="{{ route('dashboard_category') }}">
+                    <i class='bx bxs-category'></i>
+                    <span class="text">Category</span>
+                </a>
+            </li>
             <li class="{{ request()->routeIs('dashboard_user') ? 'active' : '' }}">
                 <a href="{{ route('dashboard_user') }}">
                     <i class='bx bxs-user'></i>

@@ -70,7 +70,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                         <div class="accordion-body p-5">
-                            <form action="{{ route('edit_user') }}" method="POST">
+                            <form action="{{ route('edit_user_profile') }}" method="POST">
                                 @csrf
                                 @method('patch')
                                 <div class="mb-3">

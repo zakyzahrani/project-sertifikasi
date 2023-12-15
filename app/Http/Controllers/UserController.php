@@ -27,7 +27,7 @@ class UserController extends Controller
         return view('index_user', compact('user'));
     }
 
-    public function edit_user(Request $request)
+    public function edit_user_profile(Request $request)
     {
         $user = Auth::user();
 

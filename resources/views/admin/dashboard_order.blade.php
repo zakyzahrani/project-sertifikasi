@@ -10,6 +10,10 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/style.css') }}">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
     <title>Dashboard Rental</title>
     <style>
         .order {
@@ -83,7 +87,65 @@
                     <h3>Bukti Pembayaran</h3>
 
                 </div>
-                <hr>
+
+                <table id="myTable" class="">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User ID</th>
+                            <th>Nama Kustomer</th>
+                            <th>Jumlah Pembayaran</th>
+                            <th>Kapal</th>
+                            <th>Status Pembayaran</th>
+                            <th>Tanggal Peminjaman</th>
+                            <th>Tanggal Pengembalian</th>
+                            <th>Aksi</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                            <tr>
+
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->payment->user_id }}</td>
+                                <td>{{ $order->payment->user->name }}</td>
+                                <td>{{ $order->payment->cost }}</td>
+                                <td>{{ $order->car->name }}</td>
+                                <td>@if ($order->payment->is_paid)
+                                        <p>Sudah Lunas</p>
+                                    @else
+                                        <p>Belum Lunas</p>
+                                    @endif
+                                </td>
+                                <td>{{ $order->return_date }}</td>
+                                <td>{{ $order->rent_date }}</td>
+                                <td>
+                                @if ($order->payment->payment_receipt == null)
+                                    Belum ada pembayaran
+                                @else
+                                    <a href="{{ url('storage/' . $order->payment->payment_receipt) }}">Cek
+                                        Pembayaran</a>
+                                    @if ($order->payment->is_paid == true)
+                                        <p>Pembayaran Lunas</p>
+                                    @else
+                                        <form action="{{ route('confirmPayment', $order->payment) }}" method="post">
+
+                                            @csrf
+                                            <button type="submit">Konfirmasi Pembayaran</button>
+                                        </form>
+                                    @endif
+                                @endif
+                                </td>
+
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+
+                <!-- <hr>
                 @foreach ($orders as $order)
                     <div class="container">
                         <h4>Order ID : {{ $order->id }}</h4>
@@ -118,7 +180,7 @@
 
                         <hr>
                     </div>
-                @endforeach
+                @endforeach -->
             </div>
 
         </div>
@@ -129,6 +191,11 @@
 
 
     <script src="{{ asset('admin/assets/script.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+    </script>
 </body>
 
 </html>
