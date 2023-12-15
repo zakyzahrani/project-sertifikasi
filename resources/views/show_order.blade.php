@@ -24,7 +24,7 @@
             <h1 class="display-5 text-center">Riwayat Penyewaan</h1>
 
             <!-- Card -->
-            @forelse ($orders as $order)
+            @forelse ($orders->reverse() as $order)
             <div class="card p-3 mb-3 mt-5 shadow p-3 mb-5 bg-body-tertiary rounded"
                 style="max-width: 1000px; background-color: 0d7c5d;">
                 <div class="row g-4">
