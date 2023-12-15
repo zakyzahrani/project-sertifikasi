@@ -26,6 +26,7 @@ class Car extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
     public function payment()
     {
         return $this->hasMany(Payment::class);

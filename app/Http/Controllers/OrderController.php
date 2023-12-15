@@ -60,6 +60,9 @@ class OrderController extends Controller
             'order_id' => $order->id
         ]);
 
+        $car->status = "Tidak Tersedia";
+        $car->save();
+
         return Redirect::route('show_order');
     }
     public function dashboard_order()
