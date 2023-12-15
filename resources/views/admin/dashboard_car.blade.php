@@ -23,16 +23,7 @@
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Boat</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_car') }}">Boat</a>
-                    </li>
-                </ul>
+                <h1>Boat</h1>                
             </div>
 
             <a href="{{ route('create_car') }}" class="btn-download">
@@ -52,12 +43,11 @@
                         <tr>
                             <th>Id_Mobil</th>
                             <th>Nama</th>
-                            <th>Merk</th>
-                            <th>Plat Nomor</th>
+                            <th>Kategori</th>
                             <th>Harga/Hari</th>
                             <th>Kapasistas</th>
-                            <th>Warna</th>
-                            <th>BahanBakar</th>
+                            <th>Bahan Bakar</th>
+                            <th>Status</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
@@ -67,12 +57,11 @@
                             <tr>
                                 <td>{{ $car->id }}</td>
                                 <td>{{ $car->name }}</td>
-                                <td>{{ $car->brand }}</td>
-                                <td>{{ $car->plat_num }}</td>
+                                <td>{{ $car->category }}</td>
                                 <td>{{ $car->price }}</td>
                                 <td>{{ $car->capacity }}</td>
-                                <td>{{ $car->colour }}</td>
                                 <td>{{ $car->fuel }}</td>
+                                <td>{{ $car->status }}</td>
                                 <td><img src="{{ url('storage/'.$car->boat_img) }}" alt=""
                                         style="border-radius:0; width:100px; height:100px;">
                                 </td>

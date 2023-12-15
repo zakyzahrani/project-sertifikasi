@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('category');
-            $table->string('colour');
             $table->integer('capacity');
             $table->string('fuel');
             $table->integer('price');

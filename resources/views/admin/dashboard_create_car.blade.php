@@ -74,28 +74,15 @@
                     <div class="form-group">
                         <label>Nama Kapal : </label><br>
                         <input class="form-control" type="text"name="name" /><br>
-                        <label>Jenis Kapal : </label><br>
+                        <label>Kategori Kapal : </label><br>
                         <div class="custom-select" style="width:100%;">
                             <select style="font-size: 18px ; padding: 6px 5px; margin: 12px 0px; width: 100%" name="category"
                                 id="" class="form-control">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                    <option value="{{ $category->category }}">{{ $category->category }}</option>
                                 @endforeach
                             </select><br>
-                        </div>
-                        {{-- <input class="form-control" type="text"name="category" /><br> --}}
-                        <label>Warna : </label><br>
-                        {{-- <input class="form-control" type="text"name="colour" /><br> --}}
-                        <div class="custom-select" style="width:100%;">
-                            <select style="font-size: 18px ; padding: 6px 5px; margin: 12px 0px; width: 100%" name="colour"
-                                id="" class="form-control">
-                                <option value="Hitam">Hitam</option>
-                                <option value="Putih">Putih</option>
-                                <option value="Biru">Biru</option>
-                                <option value="Gold">Gold </option>
-                                <option value="Silver">Silver</option>
-                            </select><br>
-                        </div>
+                        </div>                        
                         <label>Kapasitas Penumpang : </label><br>
                         <input class="form-control"type="number" name="capacity" /><br>
                         <label>Fuel : </label><br>
