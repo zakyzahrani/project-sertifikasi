@@ -28,6 +28,16 @@ class PaymentController extends Controller
             'is_paid' => true
         ]);
 
+        // Mendapatkan mobil yang terkait dengan pembayaran
+        $car = $payment->car;
+
+        // Memperbarui status mobil menjadi 'tidak tersedia'
+        if ($car) {
+            $car->update([
+                'status' => 'Tidak Tersedia'
+            ]);
+        }
+
         return Redirect::back();
     }
 }
