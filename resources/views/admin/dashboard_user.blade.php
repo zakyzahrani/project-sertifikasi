@@ -26,32 +26,18 @@
         <div class="head-title">
             <div class="left">
                 <h1>User</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_user') }}">User</a>
-                    </li>
-                </ul>
             </div>
 
         </div>
 
         <div class="table-data">
             <div class="order">
-                <div class="head">
-                    <h3>Table User</h3>
-                </div>
 
                 <table id="myTable" class="">
                     <thead>
                         <tr>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Umur</th>
-                            <th>Jenis Kelamin</th>
                             <th>Role</th>
                             <th>Aksi</th>
                         </tr>
@@ -62,14 +48,6 @@
 
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->age }}</td>
-                                <td>
-                                    @if ($user->gender == 'l')
-                                        Laki-Laki
-                                    @else
-                                        Perempuan
-                                    @endif
-                                </td>
                                 <td>
                                     @if ($user->is_admin == true)
                                         Admin

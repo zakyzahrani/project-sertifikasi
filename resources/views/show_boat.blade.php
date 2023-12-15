@@ -19,12 +19,12 @@
         <div class="card border-0 shadow-lg rounded pb-4">
             <div class="row">
                 <div class="col-lg-6">
-                    <img src="{{ url('Storage/' . $car->car_img) }}" class="w-100">
+                    <img src="{{ url('Storage/' . $car->boat_img) }}" class="w-100">
                 </div>
                 <div class="col-lg-6 mt-4 ps-3 d-flex flex-column justify-content-around">
                     <div class="row px-3">
-                        <h1 class="fw-bold">{{ $car->brand }} - {{ $car->name }}</h1>
-                        <p class="fs-3 fw-semibold">Rp {{ $car->price }} /day</p>
+                        <h1 class="fw-bold">{{ $car->category }} - {{ $car->name }}</h1>
+                        <p class="fs-3 fw-semibold">Rp {{ $car->price }} /hari</p>
                     </div>
                     <form action="{{ route('add_order', $car) }}" method="post" class="">
                         @csrf
@@ -58,24 +58,20 @@
     </div>
     <div class="container-lg">
         <div class="card border-0 shadow-lg rounded mt-5">
-            <h5 class="ms-3 mt-4 text-center">Detail Product</h5>
+            <h5 class="ms-3 mt-4 text-center">Detail Produk</h5>
             <hr>
             <div class="detail-product row text-center">
                 <div class="col-lg-3 col-6">
-                    <p class="mb-1">Merk</p>
-                    <p>{{ $car->brand }}</p>
+                    <p class="mb-1">Kategori</p>
+                    <p>{{ $car->category }}</p>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <p class="mb-1">Tipe</p>
+                    <p class="mb-1">Nama</p>
                     <p> {{ $car->name }}</p>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <p class="mb-1">Nomor</p>
-                    <p>{{ $car->plat_num }}</p>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <p class="mb-1">Tahun</p>
-                    <p>2023</p>
+                    <p class="mb-1">Kapasitas</p>
+                    <p>{{ $car->capacity }} orang</p>
                 </div>
             </div>
             <hr>

@@ -23,25 +23,13 @@
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Return Car</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_return') }}">ReturnCar</a>
-                    </li>
-                </ul>
+                <h1>Return Boat</h1>
             </div>
 
         </div>
 
         <div class="table-data">
             <div class="order">
-                <div class="head">
-                    <h3>Table Car</h3>
-                </div>
 
                 <table id="myTable" class="">
                     <thead>
@@ -70,7 +58,7 @@
                                 <td>{{ $CarReturn->order->return_date }}</td>
                                 <td>
                                     @if ($CarReturn->date_of_return == null)
-                                        Mobil belum kembali
+                                        Kapal belum kembali
                                     @else
                                         {{ $CarReturn->date_of_return }}
                                     @endif

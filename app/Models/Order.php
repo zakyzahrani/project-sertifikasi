@@ -18,7 +18,7 @@ class Order extends Model
 
     public function return_car()
     {
-        return $this->hasOne(ReturnCar::class);
+        return $this->hasOne(CarReturn::class);
     }
     public function car()
     {
@@ -29,4 +29,10 @@ class Order extends Model
     {
         return $this->belongsTo(Payment::class);
     }
+
+    public function carReturn()
+    {
+        return $this->hasOne(CarReturn::class);
+    }
+
 }

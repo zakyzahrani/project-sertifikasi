@@ -40,29 +40,27 @@ class AdminController extends Controller
         $request->validate(
             [
                 'name' => 'required',
-                'brand' => 'required',
+                'category' => 'required',
                 'colour' => 'required',
-                'plat_num' => 'required',
                 'capacity' => 'required',
                 'fuel' => 'required',
                 'price' => 'required',
-                'car_img' => 'required'
+                'boat_img' => 'required'
             ]
         );
 
-        $file = $request->file('car_img');
+        $file = $request->file('boat_img');
         $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
         Car::create([
             'name' => $request->name,
-            'brand' => $request->brand,
+            'category' => $request->category,
             'colour' => $request->colour,
-            'plat_num' => $request->plat_num,
             'capacity' => $request->capacity,
             'fuel' => $request->fuel,
             'price' => $request->price,
-            'car_img' => $path
+            'boat_img' => $path
         ]);
         return Redirect::route('dashboard_car');
     }
@@ -82,36 +80,32 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'brand' => 'required',
+            'category' => 'required',
             'colour' => 'required',
-            'plat_num' => 'required',
             'capacity' => 'required',
             'fuel' => 'required',
             'price' => 'required',
-            // 'car_img' => 'required'
         ]);
 
-        if ($request->hasFile('car_img')) {
-            $file = $request->file('car_img');
+        if ($request->hasFile('boat_img')) {
+            $file = $request->file('boat_img');
             $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
 
             Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
             $car->update([
-                'car_img' => $path
+                'boat_img' => $path
             ]);
         }
 
 
         $car->update([
             'name' => $request->name,
-            'brand' => $request->brand,
+            'category' => $request->category,
             'colour' => $request->colour,
-            'plat_num' => $request->plat_num,
             'capacity' => $request->capacity,
             'fuel' => $request->fuel,
             'price' => $request->price,
-            // 'car_img' => $path
         ]);
 
         return Redirect::route('dashboard_car');

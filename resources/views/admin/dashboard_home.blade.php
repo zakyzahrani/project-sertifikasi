@@ -83,34 +83,25 @@
         <div class="head-title">
             <div class="left">
                 <h1>Dashboard</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_home') }}">Home</a>
-                    </li>
-                </ul>
             </div>
 
         </div>
 
         <div class="table-data">
-            <div class="order">                                  
+            <div class="order">
                 @php
-                    $no = 1;
-                    $totalCost = 0;
+                $no = 1;
+                $totalCost = 0;
                 @endphp
-                
-            
-                @foreach ($orders as $order)                           
-                    @php
-                        $no++;
-                        $totalCost += $order->payment->cost;
-                    @endphp
+
+
+                @foreach ($orders as $order)
+                @php
+                $no++;
+                $totalCost += $order->payment->cost;
+                @endphp
                 @endforeach
-                    
+
                 <div class="row1-container">
                     <div class="box cyan">
                         <h2>Pemasukan</h2>
@@ -120,16 +111,16 @@
 
                     <div class="box red">
                         <h2>Total User</h2>
-                        <p>52</p>
+                        <p>{{ \App\Models\User::count() }}</p>
                         <img src="https://cdn-icons-png.flaticon.com/512/3659/3659810.png" alt="">
                     </div>
 
                     <div class="box blue">
                         <h2>Total Unit Kapal</h2>
-                        <p>10</p>
+                        <p>{{ \App\Models\Car::count() }}</p>
                         <img src="https://cdn-icons-png.flaticon.com/512/5232/5232943.png" alt="">
                     </div>
-                    </div>
+                </div>
 
             </div>
 

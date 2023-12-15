@@ -46,9 +46,9 @@
     </div> --}}
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <!-- <div class="carousel-item active">
                 <img src="{{ asset('user/img/Slider_1.png') }}" class="d-block w-100" alt="...">
-            </div>
+            </div> -->
             <div class="carousel-item">
                 <img src="{{ asset('user/img/Slider_2.png') }}" class="d-block w-100" alt="...">
             </div>
@@ -73,28 +73,28 @@
             <h5>Recommendation</h1>
 
             <div class="row mt-4">
-                @forelse ($cars as $car)
+                @foreach ($cars as $car)
                     <div class="col-lg-4 col-sm-6 mt-4">
                         <div class="card border-0 shadow-lg">
-                            <img src="{{ url('storage/' . $car->car_img) }}" class="card-img-top" alt="...">
-                            <div class="card-body">
+                            <img src="{{ url('storage/' . $car->boat_img) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+                            <div class="card-body" style="height: 150px;">
                                 <h5 class="card-title">{{ $car->name }}</h5>
-                                <p class="rent-merk">{{ $car->brand }}</p>
+                                <p class="rent-merk">{{ $car->category }}</p>
                             </div>
-                            <p class="rent-price fw-semibold d-flex justify-content-center">Rp {{ $car->price }} /day</p>
+                            <p class="rent-price fw-semibold d-flex justify-content-center">Rp {{ $car->price }} /hari</p>
+                            @if(auth()->user() && auth()->user()->is_admin !== 1)
                             <form action="{{ route('show_boat', $car) }}" method="get">
                                 <button type="submit"
                                     class="btn btn-rent border-0 rounded-0 rounded-bottom p-2 fw-semibold w-100">
-                                    Details</button>
+                                    Detail Kapal</button>
                             </form>
+                            @endif
+
                         </div>
                     </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>No Data Available</p>
-                    </div>
-                @endforelse
+                @endforeach
             </div>
+            
         </div>
     @endif
 

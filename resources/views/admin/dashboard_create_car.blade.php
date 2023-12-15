@@ -59,15 +59,6 @@
         <div class="head-title">
             <div class="left">
                 <h1>Tambah Kapal</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_car') }}">Boat</a>
-                    </li>
-                </ul>
             </div>
 
         </div>
@@ -75,17 +66,17 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Add Boat</h3>
+                    <h3>Tambah Kapal</h3>
 
                 </div>
                 <form role="form" method="post" action="{{ route('store_car') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label>Seri Mobil : </label><br>
+                        <label>Nama Kapal : </label><br>
                         <input class="form-control" type="text"name="name" /><br>
                         <label>Jenis Kapal : </label><br>
-                        <div class="custom-select" style="width:200px;">
-                            <select style="font-size: 18px ; padding: 6px 5px; margin: 5px 0px" name="brand"
+                        <div class="custom-select" style="width:100%;">
+                            <select style="font-size: 18px ; padding: 6px 5px; margin: 12px 0px; width: 100%" name="category"
                                 id="" class="form-control">
                                 <option value="Kapal Kecil">Kapal Kecil</option>
                                 <option value="Kapal Besar">Kapal Besar</option>
@@ -93,11 +84,11 @@
                                 <option value="Jetski">Jetski</option>
                             </select><br>
                         </div>
-                        {{-- <input class="form-control" type="text"name="brand" /><br> --}}
+                        {{-- <input class="form-control" type="text"name="category" /><br> --}}
                         <label>Warna : </label><br>
                         {{-- <input class="form-control" type="text"name="colour" /><br> --}}
-                        <div class="custom-select" style="width:200px;">
-                            <select style="font-size: 18px ; padding: 6px 5px; margin: 5px 0px" name="colour"
+                        <div class="custom-select" style="width:100%;">
+                            <select style="font-size: 18px ; padding: 6px 5px; margin: 12px 0px; width: 100%" name="colour"
                                 id="" class="form-control">
                                 <option value="Hitam">Hitam</option>
                                 <option value="Putih">Putih</option>
@@ -106,15 +97,13 @@
                                 <option value="Silver">Silver</option>
                             </select><br>
                         </div>
-                        <label>Plat Nomor : </label><br>
-                        <input class="form-control" type="text"name="plat_num" /><br>
                         <label>Kapasitas Penumpang : </label><br>
                         <input class="form-control"type="number" name="capacity" /><br>
                         <label>Fuel : </label><br>
                         <input class="form-control" type="text"name="fuel" /><br>
                         <label>Harga/Hari : </label><br>
                         <input class="form-control"type="number" name="price" /><br>
-                        <input type="file" name="car_img"><br>
+                        <input type="file" name="boat_img"><br>
                         <button class="btn btn-success" type="submit">Submit</button>
                     </div>
                 </form>

@@ -266,7 +266,7 @@
                 <tbody>
                     <tr>
                         <td class="desc">
-                            {{ $order->car->brand }}<br>{{ $order->car->name }}
+                            {{ $order->car->category }}<br>{{ $order->car->name }}
                         </td>
                         <td class="unit">Rp{{ $order->car->price }}/hari</td>
                         <td class="qty">{{ $order->rent_date }}</td>

@@ -64,15 +64,6 @@
         <div class="head-title">
             <div class="left">
                 <h1>Order</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_order') }}">Order</a>
-                    </li>
-                </ul>
             </div>
 
         </div>
@@ -90,7 +81,7 @@
                         <p>User ID : {{ $order->payment->user_id }}</p>
                         <p>Nama Kustomer : {{ $order->payment->user->name }}</p>
                         <p>Jumlah Pembayaran : {{ $order->payment->cost }}</p>
-                        <p>Mobil : {{ $order->car->brand }} {{ $order->car->name }}</p>
+                        <p>Kapal : {{ $order->car->category }} {{ $order->car->name }}</p>
                         @if ($order->payment->is_paid)
                             <p>Sudah Lunas</p>
                         @else

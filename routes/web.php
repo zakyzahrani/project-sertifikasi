@@ -11,33 +11,14 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-
 Auth::routes();
-
 
 //ROUTES DISPLAY USER
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
-Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
-Route::get('/faq', [App\Http\Controllers\HomeController::class, 'faq'])->name('faq');
-
 Route::get('/boat', [CarController::class, 'index_boat'])->name('index_boat');
-
-//Route Search
 Route::get('/search', [CarController::class, 'search'])->name('search');
+Route::post('/cancel-order/{id}', [OrderController::class, 'cancelOrder'])->name('cancel_order');
 
 Route::middleware(['admin'])->group(function () {
 
@@ -69,5 +50,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/car/{car}', [CarController::class, 'show_boat'])->name('show_boat');
     Route::get('/order', [OrderController::class, 'show_order'])->name('show_order');
     Route::post('/order/{car}', [OrderController::class, 'add_order'])->name('add_order');
+    Route::post('/order/{payment}/pay', [PaymentController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
     Route::post('/order/{payment}/pay', [PaymentController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
 });
