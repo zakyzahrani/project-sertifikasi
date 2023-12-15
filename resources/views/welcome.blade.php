@@ -52,7 +52,7 @@
             <div class="carousel-item">
                 <img src="{{ asset('user/img/Slider_2.png') }}" class="d-block w-100" alt="...">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item active">
                 <img src="{{ asset('user/img/banner1.png') }}" class="d-block w-100" alt="...">
             </div>
         </div>

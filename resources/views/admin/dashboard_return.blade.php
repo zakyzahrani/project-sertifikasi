@@ -37,9 +37,9 @@
                             <th>No</th>
                             <th>ID</th>
                             <th>ORDER_ID</th>
-                            <th>TGL SEWA</th>
-                            <th>TGL KEMBALI</th>
-                            <th>TGL PENGEMBALIAN</th>
+                            <th>Tanggal Sewa</th>
+                            <th>Tanggal Kembali</th>
+                            <th>Tanggal Pembalian</th>
                             <th>Denda</th>
                             <th>Validasi Admin</th>
                             <th>Aksi</th>
@@ -63,7 +63,13 @@
                                         {{ $CarReturn->date_of_return }}
                                     @endif
                                 </td>
-                                <td>{{ $CarReturn->fines }}</td>
+                                <td>
+                                    @if ($CarReturn->date_of_return > $CarReturn->order->return_date)
+                                        {{ $CarReturn->fines + 100000 }}
+                                    @else
+                                        {{ $CarReturn->fines }}
+                                    @endif
+                                </td>
                                 <td>
                                     @if ($CarReturn->validate_admin)
                                         Sudah Valid
@@ -72,12 +78,17 @@
                                     @endif
                                 </td>
                                 <td>
+                                    
+                                @if ($CarReturn->date_of_return == null)
                                     <form action="{{ route('edit_validate_car', $CarReturn) }}" method="get">
                                         @csrf
                                         <button type="submit" class="btn btn-primary">
                                             <i class="bx bx-edit" style="color:green; font-size: 20px;"></i>
                                         </button>
                                     </form>
+                                @else
+                                    Pengembalian Selesai
+                                @endif
                                 </td>
                             </tr>
                             <?php

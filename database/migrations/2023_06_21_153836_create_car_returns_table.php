@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('date_of_return')->nullable();
-            $table->integer('fines')->nullable();
+            $table->integer('fines')->default(0);
             $table->boolean('validate_admin')->default(0);
             $table->timestamps();
         });

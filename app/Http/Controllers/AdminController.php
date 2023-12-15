@@ -100,7 +100,6 @@ class AdminController extends Controller
             [
                 'name' => 'required',
                 'category' => 'required',
-                'colour' => 'required',
                 'capacity' => 'required',
                 'fuel' => 'required',
                 'price' => 'required',
@@ -115,7 +114,6 @@ class AdminController extends Controller
         Car::create([
             'name' => $request->name,
             'category' => $request->category,
-            'colour' => $request->colour,
             'capacity' => $request->capacity,
             'fuel' => $request->fuel,
             'price' => $request->price,
@@ -132,7 +130,8 @@ class AdminController extends Controller
 
     public function edit_car(Car $car)
     {
-        return view('admin.dashboard_edit_car', compact('car'));
+        $categories = Category::all(); // Fetch all categories
+        return view('admin.dashboard_edit_car', compact('car', 'categories'));
     }
 
     public function update_car(Car $car, Request $request)
@@ -140,7 +139,6 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required',
             'category' => 'required',
-            'colour' => 'required',
             'capacity' => 'required',
             'fuel' => 'required',
             'price' => 'required',
@@ -161,7 +159,6 @@ class AdminController extends Controller
         $car->update([
             'name' => $request->name,
             'category' => $request->category,
-            'colour' => $request->colour,
             'capacity' => $request->capacity,
             'fuel' => $request->fuel,
             'price' => $request->price,

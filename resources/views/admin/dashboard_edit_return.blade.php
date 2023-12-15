@@ -73,8 +73,6 @@
                     @csrf
                     @method('patch')
                     <div class="form-group">
-                        <label>Input Denda : </label>
-                        <input class="form-control" type="number"name="fines"value="{{ $CarReturn->fines }}" />
                         <label for="">Input Tanggal Pengembalian</label>
                         <input type="date" name="date_of_return" id="">
                         <button class="btn btn-success" type="submit">Submit</button>

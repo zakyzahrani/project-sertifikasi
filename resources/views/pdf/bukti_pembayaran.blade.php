@@ -143,7 +143,7 @@
             background: #DDDDDD;
         }
 
-        table .qty {}
+ 
 
         table .total {
             background: #0088C7;
@@ -253,7 +253,7 @@
                 </div>
             </div>
 
-            <table style="">
+            <table >
                 <thead>
                     <tr>
                         <th class="desc">Deskripsi</th>

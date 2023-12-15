@@ -73,22 +73,27 @@
                     @csrf
                     @method('patch')
                     <div class="form-group">
-                        <label>Nama : </label>
-                        <input class="form-control" type="text"name="name"value="{{ $car->name }}" />
-                        <label>Brand : </label>
-                        <input class="form-control" type="text"name="brand"value="{{ $car->brand }}" />
-                        <label>Warna : </label>
-                        <input class="form-control" type="text"name="colour" value="{{ $car->colour }}" />
-                        <label>Plat Nomor : </label>
-                        <input class="form-control" type="text"name="plat_num"value="{{ $car->plat_num }}" />
-                        <label>Kapasitas : </label>
-                        <input class="form-control"type="number" name="capacity" value="{{ $car->capacity }}" />
-                        <label>Fuel : </label>
-                        <input class="form-control" type="text"name="fuel"value="{{ $car->fuel }}" />
-                        <label>Harga/Hari : </label>
-                        <input class="form-control"type="number" name="price" value="{{ $car->price }}" />
-                        <input type="file" name="car_img">
-                        <br>
+                        <label>Nama Kapal : </label><br>
+                        <input class="form-control" type="text"name="name" value="{{ $car->name }}" /><br>
+                        <label>Kategori Kapal : </label><br>
+                        <div class="custom-select" style="width:100%;">
+                            <select style="font-size: 18px; padding: 6px 5px; margin: 12px 0px; width: 100%" name="category" class="form-control">
+                                @if(isset($categories))
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->category }}" {{ $category->category == $car->category ? 'selected' : '' }}>
+                                            {{ $category->category }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select><br>
+                        </div>                       
+                        <label>Kapasitas Penumpang : </label><br>
+                        <input class="form-control"type="number" name="capacity" value="{{ $car->capacity }}" /><br>
+                        <label>Fuel : </label><br>
+                        <input class="form-control" type="text"name="fuel" value="{{ $car->fuel }}" /><br>
+                        <label>Harga/Hari : </label><br>
+                        <input class="form-control"type="number" name="price" value="{{ $car->price }}" /><br>
+                        <input type="file" name="boat_img"><br>
                         <button class="btn btn-success" type="submit">Submit</button>
                     </div>
                 </form>
