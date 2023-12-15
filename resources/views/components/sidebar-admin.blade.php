@@ -2,7 +2,7 @@
     <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="{{ route('home') }}" class="brand" >            
+        <a href="{{ route('home') }}" class="category" >            
             <img width="250" class="bx"  src="../admin/assets/img/boatbooker.png">
         </a>
         <ul class="side-menu top">

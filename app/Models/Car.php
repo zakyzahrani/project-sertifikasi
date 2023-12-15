@@ -11,13 +11,13 @@ class Car extends Model
 
     protected $fillable = [
         'name',
-        'brand',
+        'category',
         'colour',
-        'plat_num',
         'capacity',
         'fuel',
         'price',
-        'car_img',
+        'boat_img',
+        'status',
     ];
 
     public function orders()

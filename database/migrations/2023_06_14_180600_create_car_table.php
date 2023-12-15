@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('car', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('brand');
+            $table->string('category');
             $table->string('colour');
-            $table->string('plat_num');
             $table->integer('capacity');
             $table->string('fuel');
             $table->integer('price');
-            $table->string('car_img');
+            $table->string('boat_img');
+            $table->enum('status', ['Tersedia', 'Tidak Tersedia'])->default('Tersedia');
             $table->timestamps();
         });
     }

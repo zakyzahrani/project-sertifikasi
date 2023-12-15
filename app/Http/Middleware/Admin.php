@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->is_admin == false) {
-            return Redirect::route('index_car');
+            return Redirect::route('index_boat');
         }
         return $next($request);
     }

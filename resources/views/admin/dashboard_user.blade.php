@@ -26,15 +26,6 @@
         <div class="head-title">
             <div class="left">
                 <h1>User</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="{{ route('dashboard_user') }}">User</a>
-                    </li>
-                </ul>
             </div>
 
             <a href="{{ route('create_user') }}" class="btn-download">
@@ -46,9 +37,6 @@
 
         <div class="table-data">
             <div class="order">
-                <div class="head">
-                    <h3>Table User</h3>
-                </div>
 
                 <table id="myTable" class="">
                     <thead>

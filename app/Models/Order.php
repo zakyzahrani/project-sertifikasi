@@ -29,4 +29,10 @@ class Order extends Model
     {
         return $this->belongsTo(Payment::class);
     }
+
+    public function carReturn()
+    {
+        return $this->hasOne(CarReturn::class);
+    }
+
 }

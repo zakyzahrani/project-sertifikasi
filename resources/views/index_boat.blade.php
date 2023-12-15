@@ -25,28 +25,39 @@
 
     <!-- RENT -->
     <div class="rent container-lg mt-5 riwayat-body">
-            <div class="row mt-4">
-                @foreach ($cars as $car)
-                    <div class="col-lg-4 col-sm-6 mt-4">
-                        <div class="card border-0 shadow-lg">
-                            <img src="{{ url('storage/' . $car->car_img) }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $car->name }}</h5>
-                                <p class="rent-merk">{{ $car->brand }}</p>
-                            </div>
-                            <p class="rent-price fw-semibold d-flex justify-content-center">Rp {{ $car->price }} /hari</p>
-                            @if(auth()->user() && auth()->user()->is_admin !== 1)
-                            <form action="{{ route('show_boat', $car) }}" method="get">
-                                <button type="submit"
-                                    class="btn btn-rent border-0 rounded-0 rounded-bottom p-2 fw-semibold w-100">
-                                    Detail Kapal</button>
-                            </form>
-                            @endif
-
-                        </div>
+        <div class="row mt-4">
+            @foreach ($cars as $car)
+            <div class="col-lg-4 col-sm-6 mt-4">
+                <div class="card border-0 shadow-lg">
+                    <img src="{{ url('storage/' . $car->boat_img) }}" class="card-img-top"
+                        style="height: 200px; object-fit: cover;" alt="...">
+                    <div class="card-body" style="height: 150px;">
+                        <h5 class="card-title">{{ $car->name }}</h5>
+                        <p class="rent-merk">{{ $car->category }}</p>
                     </div>
-                @endforeach
+
+                    <p class="rent-price fw-semibold d-flex justify-content-center">Rp {{ $car->price }} /hari</p>
+
+                    @if(auth()->user() && auth()->user()->is_admin !== 1)
+                        @if ($car->status == 'Tersedia')
+                        <form action="{{ route('show_boat', $car) }}" method="get">
+                            <button type="submit"
+                                class="btn btn-rent border-0 rounded-0 rounded-bottom p-2 fw-semibold w-100">
+                                Detail Kapal
+                            </button>
+                        </form>
+                        @else
+                        <button type="button" class="btn btn-rent border-0 rounded-0 rounded-bottom p-2 fw-semibold w-100"
+                        style="background-color: #FF0000; color: white;" disabled>
+                            {{ $car->status }}
+                        </button>
+                        @endif
+                    @endif
+
+                </div>
             </div>
+            @endforeach
+        </div>
     </div>
     <!-- RENT END -->
 
@@ -55,7 +66,7 @@
     <script src="{{ asset('user/js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>

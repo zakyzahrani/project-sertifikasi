@@ -27,14 +27,15 @@ class CarController extends Controller
     {
         $query = $request->input('q');
 
-        // Lakukan pencarian berdasarkan query
-        $cars = Car::where('name', 'like', '%' . $query . '%')
-                ->orWhere('brand', 'like', '%' . $query . '%')
-                ->get();
+        if ($query) {
+            $cars = Car::where('name', 'like', '%' . $query . '%')->get();
+        } else {
+            $cars = Car::all();
+        }
 
-        // Kirim data hasil pencarian ke tampilan
-        return view('search_results', compact('cars', 'query'));
+        return view('index_boat', ['cars' => $cars]);
     }
+
 
     // public function edit_product(Product $product)
     // {

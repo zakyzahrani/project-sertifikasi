@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -100,4 +101,21 @@ class OrderController extends Controller
 
         return view('admin.dashboard_home_', compact('orders'));
     }
+
+    public function cancelOrder($id)
+    {
+        $order = Order::find($id);
+
+        if ($order && $order->is_paid == 0) {
+            DB::transaction(function () use ($order) {
+                $order->payment()->delete();
+                $order->delete();
+            });
+
+            return redirect()->back()->with('success', 'Order successfully canceled.');
+        } else {
+            return redirect()->back()->with('error', 'Cannot cancel a paid order or order not found.');
+        }
+    }
+
 }
