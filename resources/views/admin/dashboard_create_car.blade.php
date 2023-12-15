@@ -26,20 +26,11 @@
             border-radius: 0.25rem;
             border: 1px solid #ccc;
             margin-bottom: 0.5rem;
-            text-align: left;
         }
 
         input[type="file"] {
             width: 100%;
             padding: 0.5rem;
-            border-radius: 0.25rem;
-            border: 1px solid #ccc;
-            margin-bottom: 0.5rem;
-        }
-
-        input[type="checkbox"] {
-            width: 5%;
-            padding: 1px;
             border-radius: 0.25rem;
             border: 1px solid #ccc;
             margin-bottom: 0.5rem;
@@ -82,20 +73,22 @@
                     @csrf
                     <div class="form-group">
                         <label>Nama Kapal : </label><br>
-                        <input class="form-control" type="text" name="name" /><br>
+                        <input class="form-control" type="text"name="name" /><br>
                         <label>Kategori Kapal : </label><br>
-                        <div class="form-group">
-                            @foreach ($categories as $category)
-                                {{ $category->category }}
-                                    <input type="checkbox" name="category[]" value="{{ $category->category }}">
-                            @endforeach
-                        </div>
+                        <div class="custom-select" style="width:100%;">
+                            <select style="font-size: 18px ; padding: 6px 5px; margin: 12px 0px; width: 100%" name="category"
+                                id="" class="form-control">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                @endforeach
+                            </select><br>
+                        </div>                        
                         <label>Kapasitas Penumpang : </label><br>
-                        <input class="form-control" type="number" name="capacity" /><br>
+                        <input class="form-control"type="number" name="capacity" /><br>
                         <label>Fuel : </label><br>
-                        <input class="form-control" type="text" name="fuel" /><br>
+                        <input class="form-control" type="text"name="fuel" /><br>
                         <label>Harga/Hari : </label><br>
-                        <input class="form-control" type="number" name="price" /><br>
+                        <input class="form-control"type="number" name="price" /><br>
                         <input type="file" name="boat_img"><br>
                         <button class="btn btn-success" type="submit">Submit</button>
                     </div>
