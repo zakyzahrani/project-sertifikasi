@@ -12,7 +12,7 @@ class Payment extends Model
         'user_id',
         'payment_receipt',
         'is_paid',
-        'cost'
+        'cost',
     ];
     public function user()
     {
@@ -22,4 +22,9 @@ class Payment extends Model
     {
         return $this->hasOne(Order::class);
     }
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
+
 }
