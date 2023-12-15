@@ -107,9 +107,16 @@ class OrderController extends Controller
     public function cancelOrder($id)
     {
         $order = Order::find($id);
-
+    
         if ($order && $order->is_paid == 0) {
             DB::transaction(function () use ($order) {
+                // Retrieve the car associated with the order
+                $car = $order->car;
+    
+                // Change the status of the car back to 'Tersedia'
+                $car->update(['status' => 'Tersedia']);
+    
+                // Delete payment and order
                 $order->payment()->delete();
                 $order->delete();
             });
