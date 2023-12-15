@@ -76,7 +76,7 @@
                                 </h4>
                                 @else
                                 <h4 class="card-text fw-bold text-success"><i class="fa fa-check"></i>
-                                    SUKSES
+                                    SELESAI
                                 </h4>
                                 <form action="{{ route('pdf_user') }}" method="post">
                                     @csrf

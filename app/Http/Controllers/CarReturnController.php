@@ -10,7 +10,6 @@ class CarReturnController extends Controller
 {
     public function dashboard_return()
     {
-
         $CarReturns = CarReturn::all();
         return view('admin.dashboard_return', compact('CarReturns'));
     }
@@ -21,6 +20,9 @@ class CarReturnController extends Controller
     }
     public function update_return(CarReturn $CarReturn, Request $request)
     {
+        // Atur nilai default 0 untuk 'fines' jika tidak ada dalam permintaan
+        $request->merge(['fines' => $request->input('fines', 0)]);
+
         $request->validate([
             'date_of_return' => 'required',
             'fines' => 'required|min:0',
